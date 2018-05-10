@@ -2,13 +2,9 @@
 
 function makeCat(name, age) {
   let Cat = {
-    name: 'Chuckles',
-    age: 2,
-  };
-  Cat['name'] = name;
-  Cat['age'] = age;
-  Cat.protype.meow = function () {
-    return 'Meow!';
+    name: name,
+    age: age,
+    meow: function () {return 'Meow!';}
   };
   return Cat;
 }
@@ -30,7 +26,11 @@ function addProperty(object, property) {
 }
 
 
-function invokeMethod(object, method); {}
+function invokeMethod(object, method) {
+
+object[method] ();
+
+}
 
 
 // method is a string that contains the name of a method on the object
@@ -57,19 +57,18 @@ function newUser(name, email, password) {
   // return the new object
 
   let nUser = {
-    name: 'Bob',
-    email: 'Bob@gmail.com',
-    password: '1!2@3#'
+    name: name,
+    email: email,
+    password: password
   };
   return nUser;
 }
 
 function hasEmail(user) {
 
-  if (user.email === null) {
+  if (user['email']) { return true;} 
+  else {
     return false;
-  } else {
-    return true;
   }
 
 }
@@ -173,12 +172,11 @@ function sumUserPostLikes(user) {
 
 
 function addCalculateDiscountPriceMethod(storeItem) {
-
-  storeItem.price = storeItem.calculateDiscountPrice();
-
-  return storeItem.price;
+  storeItem.calculateDiscountPrice = function () {
+    return storeItem.price - (storeItem.price*storeItem.discountPercentage);
+ };
+  return storeItem;
 }
-
 
 
 // add a method to the storeItem object called 'calculateDiscountPrice'
