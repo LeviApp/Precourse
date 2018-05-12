@@ -8,16 +8,19 @@
   // return the class
 
 function createUserClass() {
-  const User = function (username, name, email, password) {
-    this.username = 'SunJieMing';
-    this.name = 'Ben';
-    this.email = 'ben@lambdaschool.com';
-    this.password = 'LS Rocks!';
+
+  const User = function (newuser){
+
+    this.username = newuser.username;
+    this.name = newuser.name;
+    this.email = newuser.email;
+    this.password = newuser.password;
   };
 
-User.prototype['sayHi'] = function () { return 'Hello, my name is {{name}}';
+User.prototype['sayHi'] = function () { return 'Hello, my name is' + this [name];
   };
-return User;
+
+  return User;
 }
 
 function addPrototypeMethod(Constructor) {
